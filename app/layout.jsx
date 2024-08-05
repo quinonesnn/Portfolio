@@ -1,6 +1,8 @@
 import { Familjen_Grotesk } from "next/font/google";
 import "./globals.css";
 
+import Header from "@/components/Header";
+
 const jetbrainsMono = Familjen_Grotesk({ 
   subsets: ["latin"], 
   weight: ["400", "500", "600", "700"],
@@ -14,8 +16,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={jetbrainsMono.variable}>{children}</body>
+    <html lang="en"> 
+      <body className={jetbrainsMono.variable}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

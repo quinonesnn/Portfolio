@@ -22,6 +22,9 @@ Journey to creating my portfolio!
             lg: "960px",
             xl: "1200px",
         },
+        fontFamily: {
+            primary: "var(--font-FamiljenGrotesk)",
+        },
 
     layout.jsx
         set the font to JetbrainsMono

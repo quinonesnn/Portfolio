@@ -25,11 +25,12 @@ module.exports = {
     extend: {
       colors: {
         primary: '#eee9e2',
-        secondary: '30392D',
-        button: "F3C17C",
+        secondary: '#30392D',
+        button: "#F3C17C",
         accent: {
-          primary: "96897B",
-          secondary: "231A16"
+          primary: "#96897B",
+          secondary: "#231A16",
+          button: "#dda455",
         }
       },
       keyframes: {
