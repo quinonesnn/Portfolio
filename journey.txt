@@ -1,1 +1,27 @@
 Journey to creating my portfolio!
+
+1. Project setup
+    https://nextjs.org/
+    npx create-next-app@latest
+
+    clear page.tsx
+
+    https://ui.shadcn.com/docs
+    npx shadcn-ui@latest init
+
+    npx shadcn-ui@latest add input button scroll-area select sheet tabs textarea tooltip
+
+    tailwind.config.js
+        container: {
+            center: true,
+            padding: "15px",
+        },
+        screens: {
+            sm: "640px",
+            md: "768px",
+            lg: "960px",
+            xl: "1200px",
+        },
+
+    layout.jsx
+        set the font to JetbrainsMono
