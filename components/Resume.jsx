@@ -109,12 +109,13 @@ const skills = {
 const Resume = () => {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{
-        opacity: 1,
-        transition: { delay: 2.4, duration: 0.4, ease: "easeIn" }
-      }}
-      className='min-h-[80vh] flex items-center justify-center py-12 xl:py-0'
+        id="resume"
+        initial={{ opacity: 0 }}
+        animate={{
+            opacity: 1,
+            transition: { delay: 2.4, duration: 0.4, ease: "easeIn" }
+        }}
+        className='min-h-[50vh] flex items-center justify-center py-12 xl:py-0'
     >
       <div className="container mx-auto">
         <Tabs
@@ -128,7 +129,7 @@ const Resume = () => {
             <TabsTrigger value="about">About Me</TabsTrigger>
           </TabsList>
 
-          <div className="min-h-[70vh] w-full">
+          <div className="min-h-[40vh] w-full">
             {/* experience */}
             <TabsContent value="experience" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
