@@ -6,6 +6,11 @@ import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
+import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
+
+import { Button } from "./ui/button";
+import { IoClose } from "react-icons/io5";
+
 import { BsArrowUpRight, BsGithub } from "react-icons/bs";
 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -23,7 +28,7 @@ const projects = [
     stack: [
       { name: "React"}, { name: "TypeScript"}, { name: "AppWrite"},
     ],
-    image: "/assets/Headshot.png",
+    image: "/assets/SolariDashboard.jpg",
     live: "",
     github: "",
   },
@@ -56,6 +61,7 @@ const projects = [
 
 const Work = () => {
   const [project, setProject] = useState(projects[0]);
+  const [isOpen, setIsOpen] = useState(false)
 
   const handleSlideChange = (swiper) => {
     
@@ -151,7 +157,11 @@ const Work = () => {
               {projects.map((project, index) =>{
                 return (
                   <SwiperSlide key={index} className="w-full">
-                    <div className="h-[460px] relative group flex justify-center items-center bg-secondary">
+                    <div 
+                      className="h-[460px] relative group flex justify-center items-center bg-secondary
+                      cursor-pointer"
+                      onClick={() => setIsOpen(true)}
+                    >
                       {/* overlay */}
                       <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10">
 
@@ -169,6 +179,23 @@ const Work = () => {
                   </SwiperSlide>
                 )
               })}
+              {isOpen && (
+                <Dialog open={isOpen} onOpenChange={setIsOpen}>
+                  <DialogContent className="max-w-[90vw] max-h-[90vh] p-0">
+                    <div className="relative">
+                      <img
+                        src={project.image}
+                        alt="Expanded Image"
+                        width={800}
+                        height={600}
+                        className="object-contain w-full h-full"
+                        style={{ aspectRatio: "800/600", objectFit: "cover" }}
+                      />
+                      <DialogClose className="text-3xl"/>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              )}
               {/* slider buttons */}
               <SliderBtn 
                 containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0

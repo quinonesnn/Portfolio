@@ -1,9 +1,16 @@
 import { Button } from "@/components/ui/button";
-import { FiDownload } from "react-icons/fi";
+import { FiFile } from "react-icons/fi";
 
 // components
 import Socials from "@/components/Socials";
 import Photo from "@/components/Photo";
+import Link from "next/link";
+
+const data = {
+    title: "Full Stack Developer",
+    description: "I love my girlfriend! Shes the very best she makes me laugh, supports me and smells amazing!",
+    resumePath: "/resume.pdf",
+}
 
 const Hero = () => {
   return (
@@ -12,26 +19,25 @@ const Hero = () => {
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
           {/* text */}
           <div className="text-center xl:text-left order-2 xl:order-none">
-            <span className="text-xl text-accent-primary">Full Stack Developer</span>
+            <span className="text-xl text-accent-primary">{data.title}</span>
             <h1 className="h1 mb-6">
               Hello I'm <br/> <span>Nick Quinones</span>
             </h1>
-            <p className="max-w-[500px] mb-9 text-secondary">
-              I love my girlfriend! Shes the very best she makes me laugh, supports me and smells amazing!
+            <p className="max-w-[500px] mb-9 text-accent-secondary">
+              {data.description}
             </p>
             {/* btn and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
-              <Button
-                size="lg"
-                className="uppercase flex items-center gap-2"
-                >
-                <span>Download CV</span>
-                <FiDownload className="text-xl"/>
-              </Button>
+                  <Button size="lg">
+                    <Link href="assets/resume.pdf" className="uppercase flex items-center gap-2" download prefetch={false}>
+                      <span>View Resume</span>
+                      <FiFile className="text-xl"/>
+                    </Link>
+                  </Button>
               <div className="mb-8 xl:mb-0">
                 <Socials
                   containerStyles="flex gap-6"
-                  iconStyles="w-9 h-9 border rounded-full flex justify-center
+                  iconStyles="w-12 h-12 border rounded-full flex justify-center text-2xl
                   items-center border-secondary text-secondary bg-primary hover:bg-accent-secondary
                   hover:text-primary hover:border-primary hover:transition-all duration-500"/>
               </div>
