@@ -1,17 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { useState, useEffect, MouseEvent } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 
-import { Button } from "./ui/button";
-import { IoClose } from "react-icons/io5";
-
 import { BsArrowUpRight, BsGithub } from "react-icons/bs";
+import { HiCursorClick } from "react-icons/hi";
 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
@@ -24,23 +22,23 @@ const projects = [
     num: "01",
     category: "Full Stack",
     title: "Solari Finance",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description: "Financial SaaS platform with secure authentication, multibank connections using Plaid, transaction history, in-app payment transfers using Dwolla, appliction performance monitoring and tracking using Sentry,and responsive design with plans to integrate budgeting tools.",
     stack: [
-      { name: "React"}, { name: "TypeScript"}, { name: "AppWrite"},
+      { name: "Next.js"}, { name: "TypeScript"}, { name: "Appwrite"},
     ],
     image: "/assets/SolariDashboard.jpg",
-    live: "",
-    github: "",
+    live: "https://solari-finance.vercel.app/sign-in",
+    github: "https://github.com/quinonesnn/solari-finance",
   },
   {
     num: "02",
     category: "Full Stack",
-    title: "NFT Marketplace",
+    title: "Future Project",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     stack: [
       { name: "Next.js"}, { name: "JavaScript"}, { name: "Css 3"},
     ],
-    image: "/assets/Headshot.png",
+    image: "/assets/SolariDashboard.jpg",
     live: "",
     github: "",
   },
@@ -52,53 +50,96 @@ const projects = [
     stack: [
       { name: "Next.js"}, { name: "JavaScript"}, { name: "Css 3"},
     ],
-    image: "/assets/Headshot.png",
+    image: "/assets/SolariDashboard.jpg",
     live: "",
     github: "",
   }
 ]
 
+const MAGNIFIER_SIZE = 175;
+const ZOOM_LEVEL = 1.5;
 
-const Work = () => {
+const Projects = () => {
   const [project, setProject] = useState(projects[0]);
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  // Hover over Image Mouse Zoom
+  const [zoomable, setZoomable] = useState(false);
+  const [imageSize, setImageSize] = useState({ width: 0, height: 0 });
+  const [position, setPosition] = useState({ x: 0, y: 0, mouseX: 0, mouseY: 0 });
 
   const handleSlideChange = (swiper) => {
-    
     // get curr slide idx
     const currentIdx = swiper.activeIndex;
     // update project state based on current slide idx
     setProject(projects[currentIdx]);
   }
 
+  // Event handlers
+    const handleMouseEnter = (e) => {
+        let element = e.currentTarget;
+        let { width, height } = element.getBoundingClientRect();
+        setImageSize({ width, height });
+        setZoomable(true);
+        updatePosition(e);
+    };
+
+    const handleMouseLeave = (e) => {
+        setZoomable(false);
+        updatePosition(e);
+    };
+
+    const handleMouseMove = (e) => {
+        updatePosition(e);
+    };
+
+    const updatePosition = (e) => {
+        const { left, top } = e.currentTarget.getBoundingClientRect();
+        let x = e.clientX - left;
+        let y = e.clientY - top;
+        setPosition({
+            x: -x * ZOOM_LEVEL + (MAGNIFIER_SIZE / 2),
+            y: -y * ZOOM_LEVEL + (MAGNIFIER_SIZE / 2),
+            mouseX: x - (MAGNIFIER_SIZE / 2),
+            mouseY: y - (MAGNIFIER_SIZE / 2),
+        });
+    };
+
   return (
     <motion.div
         id="projects"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 , transition: { delay: 0.5, duration: 0.5, ease: "easeIn" } }}
-        className="min-h-[80vh] flex flex-col justify-center  py-12 xl:px-0"
+        className="min-h-[80vh] flex flex-col justify-center  py-12 xl:px-0 bg-secondary rounded-3xl"
     >
       <div className="container mx-auto">
+        <div className="flex flex-col h-[100px] w-full xl:w-[48%]">
+          <h1 className="text-5xl font-bold text-primary py-4">Projects</h1>
+          <div className="border border-primary"></div> 
+        </div>
         <div className="flex flex-col xl:flex-row xl:gap-[30px]">
           <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
             <div className="flex flex-col gap-[30px] h-[50%]">
               {/* outline number */}
-              <div className="text-8xl leading-none font-extrabold text-outline">
+              <div className="text-8xl text-accent-primary leading-none font-extrabold text-outline">
                 {project.num}
               </div>
-              {/* project category */}
-              <h2 className="text-[42px] font-bold leading-none group-hover:text-button
+              {/* project title */}
+              <h2 className="text-[42px] font-bold leading-none text-primary group-hover:text-button
                 transition-all duration-500 capitalize"
               >
-                {project.category} Project
+                {project.title}
               </h2>
-              {/* project description */}
-              <p className="text-accent-secondary">{project.description}</p>
+              <div>
+                {/* project category */}
+                <p className="text-accent-primary">{project.category}</p>
+                {/* project description */}
+                <p className="text-primary">{project.description}</p>
+              </div>
               {/* project stack */}
               <ul className="flex gap-4">
                 {project.stack.map((item, index)=>{
                   return (
-                    <li key={index} className="text-xl text-button">
+                    <li key={index} className="text-xl text-accent-primary">
                       {item.name}
                       {/* remove the last comma */}
                       {index !== project.stack.length - 1 && ","}
@@ -107,7 +148,7 @@ const Work = () => {
                 })}
               </ul>
               {/* border */}
-              <div className="border border-accent-secondary"></div>
+              <div className="border border-primary"></div>
               {/* buttons */}
               <div className="flex items-center gap-4">
                 {/* Live Project Button */}
@@ -115,7 +156,7 @@ const Work = () => {
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
                       <TooltipTrigger 
-                        className="w-[70px] h-[70px] rounded-full bg-accent-secondary flex justify-center items-center group"
+                        className="w-[70px] h-[70px] rounded-full bg-button hover:bg-accent-button flex justify-center items-center group"
                       >
                         <BsArrowUpRight
                           className="text-primary text-3xl group-hover:text-accent-secondary"
@@ -132,7 +173,7 @@ const Work = () => {
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
                       <TooltipTrigger 
-                        className="w-[70px] h-[70px] rounded-full bg-accent-secondary flex justify-center items-center group"
+                        className="w-[70px] h-[70px] rounded-full bg-button hover:bg-accent-button flex justify-center items-center group"
                       >
                         <BsGithub
                           className="text-primary text-3xl group-hover:text-accent-secondary"
@@ -163,8 +204,13 @@ const Work = () => {
                       onClick={() => setIsOpen(true)}
                     >
                       {/* overlay */}
-                      <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10">
-
+                      <div className="absolute top-0 bottom-0 w-full h-full bg-black/5 hover:bg-black/10 z-10">
+                        <div
+                          className="h-[480px] flex justify-center items-center opacity-0 hover:opacity-60"
+                        >
+                          <HiCursorClick className="cursor-pointer text-accent-button text-5xl z-15"
+                          />
+                        </div>
                       </div>
                       {/* image */}
                       <div className="relative w-full h-full">
@@ -181,15 +227,34 @@ const Work = () => {
               })}
               {isOpen && (
                 <Dialog open={isOpen} onOpenChange={setIsOpen}>
-                  <DialogContent className="max-w-[90vw] max-h-[90vh] p-0">
+                  <DialogContent 
+                    className="max-w-[90vw] max-h-[90vh] p-0"
+                    onMouseLeave={handleMouseLeave}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseMove={handleMouseMove}
+                  >
                     <div className="relative">
-                      <img
+                      <Image
                         src={project.image}
                         alt="Expanded Image"
                         width={800}
                         height={600}
                         className="object-contain w-full h-full"
                         style={{ aspectRatio: "800/600", objectFit: "cover" }}
+                      />
+                      <div
+                          style={{
+                              backgroundPosition: `${position.x}px ${position.y}px`,
+                              backgroundImage: `url(${project.image})`,
+                              backgroundSize: `${imageSize.width * ZOOM_LEVEL}px ${imageSize.height * ZOOM_LEVEL}px`,
+                              backgroundRepeat: 'no-repeat',
+                              display: zoomable ? 'block' : 'none',
+                              top: `${position.mouseY}px`,
+                              left: `${position.mouseX}px`,
+                              width: `${MAGNIFIER_SIZE}px`,
+                              height: `${MAGNIFIER_SIZE}px`,
+                          }}
+                          className={`z-50 border-4 rounded-full pointer-events-none absolute border-gray-500`}
                       />
                       <DialogClose className="text-3xl"/>
                     </div>
@@ -211,4 +276,4 @@ const Work = () => {
   )
 }
 
-export default Work
+export default Projects
