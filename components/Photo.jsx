@@ -30,18 +30,19 @@ const Photo = () => {
                 </motion.div>
             
                 <motion.svg 
-                    className="w-[316px] xl:w-[516px] h-[316px] xl:h-[516px]"
+                    className="w-[300px] xl:w-[500px] h-[300px] xl:h-[500px]"
                     fill="transparent"
-                    viewBox="0 0 505 505"
+                    viewBox="0 0 550 550"
+                    overflow="visible"
                     xmlns="http://www.w3.org/2000/svg"
                 >
                     {/* 1:12:00 */}
                     <motion.circle 
-                        cx="259" 
-                        cy="259"
-                        r="257"
+                        cx="50%" 
+                        cy="50%"
+                        r="53%"
                         stroke="#30392D"
-                        strokeWidth="6"
+                        strokeWidth="8"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         initial={{ strokeDasharray: "24 10 0 0"}}

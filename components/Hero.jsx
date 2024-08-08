@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const data = {
     title: "Full Stack Developer",
-    description: "I love my girlfriend! Shes the very best she makes me laugh, supports me and smells amazing!",
+    description: "Highly motivated full-stack developer with a Bachelor of Science in Computer Science and a portfolio of personal projects. I enjoy building sites and apps with React (Next.js).",
     resumePath: "/resume.pdf",
 }
 
