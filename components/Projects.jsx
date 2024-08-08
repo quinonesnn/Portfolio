@@ -8,7 +8,8 @@ import "swiper/css";
 
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 
-import { BsArrowUpRight, BsGithub } from "react-icons/bs";
+import { ImArrowUpRight2, ImGithub } from "react-icons/im";
+
 import { HiCursorClick } from "react-icons/hi";
 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -158,7 +159,7 @@ const Projects = () => {
                       <TooltipTrigger 
                         className="w-[70px] h-[70px] rounded-full bg-button hover:bg-accent-button flex justify-center items-center group"
                       >
-                        <BsArrowUpRight
+                        <ImArrowUpRight2
                           className="text-primary text-3xl group-hover:text-accent-secondary"
                         />
                       </TooltipTrigger>
@@ -175,7 +176,7 @@ const Projects = () => {
                       <TooltipTrigger 
                         className="w-[70px] h-[70px] rounded-full bg-button hover:bg-accent-button flex justify-center items-center group"
                       >
-                        <BsGithub
+                        <ImGithub
                           className="text-primary text-3xl group-hover:text-accent-secondary"
                         />
                       </TooltipTrigger>
