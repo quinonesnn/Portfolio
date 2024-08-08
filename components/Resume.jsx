@@ -128,10 +128,11 @@ const Resume = () => {
     <motion.div
         id="resume"
         initial={{ opacity: 0 }}
-        animate={{
-            opacity: 1,
-            transition: { delay: 2.4, duration: 0.4, ease: "easeIn" }
+        whileInView={{
+          opacity: 1,
         }}
+        transition={{ duration: 1.5 }}
+        viewport={{ once: true }}
         className='min-h-[50vh] flex items-center justify-center py-16 xl:py-0'
     >
       <div className="container mx-auto">

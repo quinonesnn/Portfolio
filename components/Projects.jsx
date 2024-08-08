@@ -109,7 +109,11 @@ const Projects = () => {
     <motion.div
         id="projects"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 , transition: { delay: 0.5, duration: 0.5, ease: "easeIn" } }}
+        whileInView={{
+          opacity: 1,
+        }}
+        transition={{ duration: 1.5 }}
+        viewport={{ once: true }}
         className="min-h-[80vh] flex flex-col justify-center  py-12 xl:px-0 bg-secondary rounded-3xl"
     >
       <div className="container mx-auto">
