@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
+import { useState } from "react";
+
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaLanguage, FaPaperPlane } from "react-icons/fa";
 
 import { motion } from "framer-motion";
@@ -33,6 +35,18 @@ const info = [
   }
 ]
 const Contact = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function submitContact(e) {
+    e.preventDefault();
+    setIsLoading(true);
+
+    const formData = new FormData(e.currentTarget)
+    await sendEmail(formData)
+
+    setIsLoading(false)
+  }
+
   return (
     <motion.div
       id="contact"
@@ -53,9 +67,7 @@ const Contact = () => {
           {/* form */}
           <div className="xl:w-[54%] order-2 xl:order-none">
             <form 
-              action={async (formData) => {
-                await sendEmail(formData);
-              }}
+              onSubmit={submitContact}
               className="flex flex-col gap-6 p-10 bg-secondary rounded-xl"
             >
               <h3 className="text-4xl text-primary">
@@ -90,8 +102,20 @@ const Contact = () => {
                 placeholder="Please type your message here"
                 required
               />
-              <Button type="submit" size="md" className="flex items-center focus:scale-110 hover:scale-110 max-w-40 gap-2 group">
-                Submit <FaPaperPlane className="transition-all group-hover:translate-x-1 group-hover:-translate-y-1"/>
+              <Button 
+                type="submit"
+                disabled={isLoading}
+                size="md" 
+                className="flex items-center focus:scale-110 hover:scale-110 max-w-40 gap-2 group
+                disabled:scale-100 disabled:cursor-not-allowed disabled:bg-opacity-75"
+              >
+                {isLoading ? (
+                  <div className="h-5 w-5 animate-spin rounded-full border-b-2 border-black"></div>
+                ) : (
+                  <>
+                    Submit <FaPaperPlane className="transition-all group-hover:translate-x-1 group-hover:-translate-y-1"/>
+                  </>
+                )}
               </Button>
             </form>
           </div>
