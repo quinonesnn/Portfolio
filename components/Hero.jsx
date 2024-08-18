@@ -19,11 +19,11 @@ const Hero = () => {
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
           {/* text */}
           <div className="text-center xl:text-left order-2 xl:order-none">
-            <span className="text-xl text-accent-primary">{data.title}</span>
+            <span className="text-xl text-gray-600 dark:text-gray-300">{data.title}</span>
             <h1 className="h1 mb-6">
               Hello I'm <br/> <span>Nick Quinones</span>
             </h1>
-            <p className="max-w-[500px] mb-9 text-accent-secondary">
+            <p className="max-w-[500px] mb-9">
               {data.description}
             </p>
             {/* btn and socials */}
@@ -37,9 +37,7 @@ const Hero = () => {
               <div className="mb-8 xl:mb-0">
                 <Socials
                   containerStyles="flex gap-6"
-                  iconStyles="w-12 h-12 border rounded-full flex justify-center text-2xl
-                  items-center border-secondary text-secondary bg-primary hover:bg-accent-secondary
-                  hover:text-primary hover:border-primary hover:transition-all duration-500"/>
+                />
               </div>
             </div>
             {/* photo */}

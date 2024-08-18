@@ -114,37 +114,37 @@ const Projects = () => {
         }}
         transition={{ duration: 1.5 }}
         viewport={{ once: true }}
-        className="min-h-[80vh] flex flex-col justify-center  py-12 xl:px-0 bg-secondary rounded-3xl"
+        className="min-h-[80vh] flex flex-col justify-center  py-12 xl:px-0 rounded-3xl"
     >
       <div className="container mx-auto">
         <div className="flex flex-col h-[100px] w-full xl:w-[48%]">
-          <h1 className="text-5xl font-bold text-primary py-4">Projects</h1>
-          <div className="border border-primary"></div> 
+          <h1 className="text-5xl font-bold py-4">Projects</h1>
+          <div className="border"></div> 
         </div>
         <div className="flex flex-col xl:flex-row xl:gap-[30px]">
           <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
             <div className="flex flex-col gap-[30px] h-[50%]">
               {/* outline number */}
-              <div className="text-8xl text-accent-primary leading-none font-extrabold text-outline">
+              <div className="text-8xl leading-none font-extrabold text-outline">
                 {project.num}
               </div>
               {/* project title */}
-              <h2 className="text-[42px] font-bold leading-none text-primary group-hover:text-button
+              <h2 className="text-[42px] font-bold leading-none
                 transition-all duration-500 capitalize"
               >
                 {project.title}
               </h2>
               <div>
                 {/* project category */}
-                <p className="text-accent-primary">{project.category}</p>
+                <p className="">{project.category}</p>
                 {/* project description */}
-                <p className="text-primary">{project.description}</p>
+                <p className="">{project.description}</p>
               </div>
               {/* project stack */}
               <ul className="flex gap-4">
                 {project.stack.map((item, index)=>{
                   return (
-                    <li key={index} className="text-xl text-accent-primary">
+                    <li key={index} className="text-xl">
                       {item.name}
                       {/* remove the last comma */}
                       {index !== project.stack.length - 1 && ","}
@@ -153,7 +153,7 @@ const Projects = () => {
                 })}
               </ul>
               {/* border */}
-              <div className="border border-primary"></div>
+              <div className="border"></div>
               {/* buttons */}
               <div className="flex items-center gap-4">
                 {/* Live Project Button */}
@@ -161,10 +161,10 @@ const Projects = () => {
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
                       <TooltipTrigger 
-                        className="w-[70px] h-[70px] rounded-full bg-button hover:bg-accent-button flex justify-center items-center group"
+                        className="w-[70px] h-[70px] rounded-full flex justify-center items-center group"
                       >
                         <ImArrowUpRight2
-                          className="text-primary text-3xl group-hover:text-accent-secondary"
+                          className="text-3xl"
                         />
                       </TooltipTrigger>
                       <TooltipContent>
@@ -178,10 +178,10 @@ const Projects = () => {
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
                       <TooltipTrigger 
-                        className="w-[70px] h-[70px] rounded-full bg-button hover:bg-accent-button flex justify-center items-center group"
+                        className="w-[70px] h-[70px] rounded-fullflex justify-center items-center group"
                       >
                         <ImGithub
-                          className="text-primary text-3xl group-hover:text-accent-secondary"
+                          className="text-3xl group-hover:text-accent-secondary"
                         />
                       </TooltipTrigger>
                       <TooltipContent>
@@ -213,7 +213,7 @@ const Projects = () => {
                         <div
                           className="h-[480px] flex justify-center items-center opacity-0 hover:opacity-60"
                         >
-                          <HiCursorClick className="cursor-pointer text-accent-button text-5xl z-15"
+                          <HiCursorClick className="cursor-pointertext-5xl z-15"
                           />
                         </div>
                       </div>
@@ -270,7 +270,7 @@ const Projects = () => {
               <SliderBtn 
                 containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0
                 z-20 w-full justify-between xl:w-max xl:justify-none"
-                btnStyles="bg-button hover:bg-accent-button text-primary text-[22px] w-[44px] h-[44px] flex
+                btnStyles="text-[22px] w-[44px] h-[44px] flex
                 justify-center items-center transition-center"
               />
             </Swiper>

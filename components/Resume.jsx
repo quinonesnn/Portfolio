@@ -2,7 +2,8 @@
 
 import { FaHtml5, FaCss3, FaJs, FaReact, FaFigma, FaNodeJs } from "react-icons/fa"
 import { ImArrowUpRight2 } from "react-icons/im";
-import { SiTailwindcss, SiNextdotjs } from "react-icons/si"
+import { SiTailwindcss, SiNextdotjs, SiAppwrite} from "react-icons/si"
+import { BiLogoTypescript } from "react-icons/bi";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
@@ -102,6 +103,10 @@ const skills = {
       icon: <FaJs />,
     },
     {
+      name: "TypeScript",
+      icon: <BiLogoTypescript />,
+    },
+    {
       name: "React",
       icon: <FaReact />,
     },
@@ -121,6 +126,10 @@ const skills = {
       name: "Figma",
       icon: <FaFigma />,
     },
+    {
+      name: "Appwrite",
+      icon: <SiAppwrite />,
+    },
   ]
 }
 const Resume = () => {
@@ -137,8 +146,8 @@ const Resume = () => {
     >
       <div className="container mx-auto">
         <div className="flex flex-col h-[100px] w-full xl:w-[380px]">
-          <h1 className="text-5xl font-bold text-accent-secondary py-4">Resume</h1>
-          <div className="border border-accent-secondary"></div> 
+          <h1 className="text-5xl font-bold py-4">Resume</h1>
+          <div className="border"></div> 
         </div>
         <Tabs
           defaultValue="experience"
@@ -155,7 +164,7 @@ const Resume = () => {
             {/* experience */}
             <TabsContent value="experience" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                <h3 className="text-4xl font-bold text-accent-secondary">
+                <h3 className="text-4xl font-bold">
                   {experience.title}
                 </h3>
                 <ScrollArea className="h-[400px]">
@@ -164,10 +173,10 @@ const Resume = () => {
                       return (
                         <li 
                           key={index}
-                          className="bg-accent-secondary text-primary py-6 px-10 rounded-xl
+                          className=" py-6 px-10 rounded-xl
                           flex flex-col  items-center lg:items-start gap-1"
                         >
-                          <span className="text-button">{item.company} | {item.duration}</span>
+                          <span className="">{item.company} | {item.duration}</span>
                           <h3 className=" text-2xl max-w-[260px] min-h-[60px] text-center lg:text-left">
                             {item.position}
                           </h3>
@@ -175,8 +184,8 @@ const Resume = () => {
                             {item.description.map((item, index) => (
                               <div key={index} className="flex flex-row relative">
                                 {/* dot */}
-                                <span className="w-[10px] h-[10px] absolute top-2 rounded-full bg-button"></span>
-                                <p className="text-lg text-primary ml-5 text-left">{item}</p>
+                                <span className="w-[10px] h-[10px] absolute top-2 rounded-full"></span>
+                                <p className="text-lg ml-5 text-left">{item}</p>
                               </div>
                             ))}
                           </div>
@@ -191,7 +200,7 @@ const Resume = () => {
             {/* education */}
             <TabsContent value="education" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                <h3 className="text-4xl font-bold text-accent-secondary">
+                <h3 className="text-4xl font-bold">
                   {education.title}
                 </h3>
                 <ScrollArea className="h-[400px]">
@@ -200,18 +209,18 @@ const Resume = () => {
                       return (
                         <li 
                           key={index}
-                          className="bg-secondary text-primary py-6 px-10 rounded-xl
+                          className=" py-6 px-10 rounded-xl
                           flex flex-col items-center lg:items-start gap-1"
                         >
-                          <span className="text-button">{item.duration}</span>
+                          <span className="">{item.duration}</span>
                           <h3 className="text-2xl max-w-[260px] min-h-[60px] text-center lg:text-left">
                             {item.degree}
                           </h3>
                           <div className="flex flex-col gap-3">
                             {/* dot */}
                             <div className="flex flex-row relative">
-                              <span className="w-[10px] h-[10px] absolute top-2 rounded-full bg-button"></span>
-                              <p className="text-lg text-primary ml-5 text-left">{item.institution}</p>
+                              <span className="w-[10px] h-[10px] absolute top-2 rounded-full"></span>
+                              <p className=" ml-5 text-left">{item.institution}</p>
                             </div>
                           </div>
                           {item.isLink == 1 && (
@@ -224,7 +233,7 @@ const Resume = () => {
                                         className="w-[40px] h-[40px] xl:w-[50px] xl:h-[50px] rounded-full bg-button hover:bg-accent-button flex justify-center items-center group "
                                       >
                                         <ImArrowUpRight2
-                                          className="text-primary text-2xl group-hover:text-accent-secondary"
+                                          className=" text-2xl "
                                         />
                                       </TooltipTrigger>
                                       <TooltipContent>
@@ -258,10 +267,10 @@ const Resume = () => {
                         <TooltipProvider delayDuration={100}>
                           <Tooltip>
                             <TooltipTrigger 
-                              className="w-full h-[150px] bg-accent-secondary hover:bg-secondary rounded-xl flex
+                              className="w-full h-[150px] rounded-xl flex
                               justify-center items-center group"
                             >
-                              <div className="text-6xl text-accent-primary group-hover:text-button  transition-all duration-300">
+                              <div className="text-6xl group-hover:text-button  transition-all duration-300">
                                 {skill.icon}
                               </div>
                             </TooltipTrigger>

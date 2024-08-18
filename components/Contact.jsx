@@ -1,49 +1,36 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
-import { useState } from "react";
-
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaLanguage, FaPaperPlane } from "react-icons/fa";
-
 import { motion } from "framer-motion";
+import { FaPaperPlane } from "react-icons/fa";
+import { useToast } from "@/components/ui/use-toast"
 
 import { sendEmail } from "@/actions/sendEmail";
+import { info } from "@/lib/data";
 
-const info = [
-  {
-    icon: <FaPhoneAlt />,
-    fieldName: "Phone",
-    value: "386-473-5724",
-  },
-  {
-    icon: <FaEnvelope />,
-    fieldName: "Email",
-    value: "quinonesnn@gmail.com",
-  },
-  {
-    icon: <FaMapMarkerAlt />,
-    fieldName: "Location",
-    value: "Orlando, FL",
-  },
-  {
-    icon: <FaLanguage />,
-    fieldName: "Languages",
-    value: "English and Spanish",
-  }
-]
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast()
+
 
   async function submitContact(e) {
     e.preventDefault();
     setIsLoading(true);
 
     const formData = new FormData(e.currentTarget)
-    await sendEmail(formData)
+    const { myMessage, theirMessage, error} = await sendEmail(formData)
 
+    if (error) {
+      toast({title: error, variant:"destructive"})
+    } else {
+      toast({title: "Email sent!", variant:"success"})
+      e.target.reset()
+    }
+    
     setIsLoading(false)
   }
 
@@ -60,22 +47,23 @@ const Contact = () => {
     >
       <div className="container mx-auto">
         <div className="flex flex-col h-[100px] w-full xl:w-[380px]">
-          <h1 className="text-5xl font-bold text-accent-secondary py-4">Contact</h1>
-          <div className="border border-accent-secondary"></div> 
+          <h1 className="text-5xl font-bold py-4">Contact</h1>
+          <div className="border"></div> 
         </div>
         <div className="flex flex-col xl:flex-row gap-[30px] min-h-[40vh]">
           {/* form */}
-          <div className="xl:w-[54%] order-2 xl:order-none">
+          <div className=" bg-gray-200 border-black/5 rounded-lg dark:bg-white/10
+          xl:w-[54%] order-2 xl:order-none">
             <form 
               onSubmit={submitContact}
-              className="flex flex-col gap-6 p-10 bg-secondary rounded-xl"
+              className="flex flex-col gap-6 p-10 rounded-xl"
             >
-              <h3 className="text-4xl text-primary">
+              <h3 className="text-4xl underline decoration-indigo-600 underline-offset-4">
                 Let's work together.
               </h3>
-              <p className="text-accent-primary text-lg">
+              <p className="text-lg">
                 Please contact me directly at {""}
-                <a className="underline" href="mailto:quinonesnn@gmail">quinonesnn@gmail.com </a>
+                <a className="underline decoration-indigo-600 underline-offset-4" href="mailto:quinonesnn@gmail">quinonesnn@gmail.com </a>
                 or use the form below.
               </p>
               {/* input */}
@@ -128,13 +116,11 @@ const Contact = () => {
                     key={index}
                     className="flex gap-6 items-center"
                   >
-                    <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-secondary text-button
-                     rounded-md flex items-center justify-center"
-                    >
-                      <div className="text-[28px]">{item.icon}</div>
+                    <div className="flex items-center justify-center">
+                      <div className="text-[28px] text-indigo-600 dark:text-indigo-400">{item.icon}</div>
                     </div>
                     <div className="flex-1">
-                      <p className="text-accent-secondary">{item.fieldName}</p>
+                      <p className="">{item.fieldName}</p>
                       <h3 className="text-xl">{item.value}</h3>
                     </div>
                   </li>

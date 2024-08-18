@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 const socials = [
@@ -17,9 +18,11 @@ const Socials = ({containerStyles, iconStyles}) => {
         <div className={containerStyles}>
             {socials.map((item, index)=> {
                 return (
-                    <Link href={item.path} key={index} className={iconStyles}>
-                        {item.icon}
-                    </Link>
+                    <Button variant="icon" size="sm" key={index}>
+                        <Link href={item.path} key={index}>
+                            {item.icon}
+                        </Link>
+                    </Button>
                 )
             })}
         </div>

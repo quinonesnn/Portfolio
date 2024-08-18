@@ -24,13 +24,13 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: '#eee9e2',
-        secondary: '#30392D',
-        button: "#F3C17C",
+        primary: '#FAFAFF',
+        secondary: '#273469',
+        button: "#E4D9FF",
         accent: {
-          primary: "#96897B",
-          secondary: "#231A16",
-          button: "#dda455",
+          primary: "#A9ABB1",
+          secondary: "#1E2749",
+          button: "#8687B4",
         }
       },
       keyframes: {
@@ -50,4 +50,5 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
+  darkMode: "class",
 }

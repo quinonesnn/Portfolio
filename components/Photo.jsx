@@ -17,7 +17,7 @@ const Photo = () => {
                     animate={{ opacity: 1,
                         transition: { delay: .2, duration: 0.4, ease: "easeOut" }
                     }}
-                    className='w-[300px] h-[300px] xl:w-[500px] xl:h-[500px] absolute top-1 mix-blend-multiply'
+                    className='w-[300px] h-[300px] xl:w-[500px] xl:h-[500px] absolute top-1'
                 >
                     <Image
                         src="/assets/Headshot.png"
@@ -36,13 +36,12 @@ const Photo = () => {
                     overflow="visible"
                     xmlns="http://www.w3.org/2000/svg"
                 >
-                    {/* 1:12:00 */}
                     <motion.circle 
                         cx="50%" 
                         cy="50%"
                         r="53%"
-                        stroke="#30392D"
-                        strokeWidth="8"
+                        stroke="#6366f1"
+                        strokeWidth="10"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         initial={{ strokeDasharray: "24 10 0 0"}}
