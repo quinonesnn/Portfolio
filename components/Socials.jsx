@@ -1,17 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
-
-const socials = [
-    {
-        icon: <FaGithub/>,
-        path: "https://github.com/quinonesnn"
-    },
-    {
-        icon: <FaLinkedinIn/>,
-        path: "http://linkedin.com/in/nick-quinones"
-    }
-]
+import { socials } from "@/lib/data";
 
 const Socials = ({containerStyles, iconStyles}) => {
     return (

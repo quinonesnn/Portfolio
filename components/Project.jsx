@@ -47,8 +47,8 @@ const Project = ({
           className="pt-4 pb-7 px-5 sm:pl-10 sm:pr-2 sm:pt-10 sm:max-w-[50%]
           flex flex-col h-full sm:group-even:ml-[18rem] order-2 sm:order-1"
         >
-          <h3 className="text-2xl font-semibold">{title}</h3>
-          <p className="mt-2 leading-relaxed text-gray-700 dark:text-white/70">
+          <h3 className="text-3xl font-semibold">{title}</h3>
+          <p className="text-lg mt-2 leading-relaxed text-gray-700 dark:text-white/70">
               {description}
           </p>
           <ul className="flex gap-1 my-3">

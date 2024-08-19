@@ -23,7 +23,7 @@ const Hero = () => {
             <h1 className="h1 mb-6">
               Hello I'm <br/> <span>Nick Quinones</span>
             </h1>
-            <p className="max-w-[500px] mb-9">
+            <p className="text-lg max-w-[500px] mb-9">
               {data.description}
             </p>
             {/* btn and socials */}
