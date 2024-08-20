@@ -2,7 +2,8 @@
 
 import * as React from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
-import { ChevronDown } from "lucide-react"
+import { IoChevronDownCircleOutline } from "react-icons/io5";
+
 
 import { cn } from "@/lib/utils"
 
@@ -23,7 +24,11 @@ const AccordionTrigger = React.forwardRef(({ className, children, ...props }, re
       )}
       {...props}>
       {children}
-      <ChevronDown className="h-4 w-4 text-indigo-600 shrink-0 transition-transform duration-200" />
+      <IoChevronDownCircleOutline
+        className="h-8 w-8  text-indigo-600 shrink-0 transition-transform
+        focus:scale-110 hover:scale-110 hover:text-indigo-900
+        " 
+      />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ))

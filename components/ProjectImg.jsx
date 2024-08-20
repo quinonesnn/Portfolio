@@ -16,7 +16,7 @@ const ProjectImg = ({image}) => {
                 <Image 
                     src={image}
                     alt="Project I worked on"
-                    quality={95}
+                    quality={100}
                     width={452}
                     height={200}
                     className="sm:absolute relative sm:top-8 top-2 sm:-right-40 
@@ -44,8 +44,8 @@ const ProjectImg = ({image}) => {
                             <Image
                                 src={image}
                                 alt="Expanded Image"
-                                width={200}
-                                height={200}
+                                width={800}
+                                height={800}
                                 className="object-contain w-[88%] h-[88%] rounded-xl touch-pinch-zoom"
                                 // style={{ aspectRatio: "200/200"}}
                             />
