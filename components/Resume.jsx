@@ -22,9 +22,9 @@ const Resume = () => {
         threshold: 0
     });
     return (
-        <section ref={ref}  id="resume" className="container mx-auto mt-28">
+        <section ref={ref}  id="resume" className="container mx-auto mt-12">
             <div className="flex flex-col h-[100px] w-full xl:w-[380px]">
-                <h1 className="text-5xl font-bold py-4">Resume</h1>
+                <h1 className="text-5xl font-bold py-4">Experience</h1>
                 <div className="border"></div> 
             </div>
             <VerticalTimeline lineColor={theme === "light" ? "#f3f4f6" : "rgba(255, 255, 255, 0.05)"}>

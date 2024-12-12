@@ -29,12 +29,6 @@ export const ContactFormEmail = ({name}) => (
             I appreciate your time in viewing my portfolio. 
             Allow me a moment to review your submission and you will hear from me shortly! 
           </Text>
-          <Text style={paragraph}>
-            In the mean time check out some of my projects listed on my page:
-          </Text>
-          <Button style={button} href="">
-            View Nick's Projects
-          </Button>
           <Hr style={hr} />
           <Text style={paragraph}>— Nick Q</Text>
         </Section>

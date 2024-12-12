@@ -7,8 +7,8 @@ import Photo from "@/components/Photo";
 import Link from "next/link";
 
 const data = {
-    title: "Full Stack Developer",
-    description: "Highly motivated full-stack developer with a Bachelor of Science in Computer Science and a portfolio of personal projects. I enjoy building sites and apps with React (Next.js).",
+    title: "Technical Consultant / Full Stack Developer",
+    description: "Result-oriented and passionate about solving complex technical challenges. Proven track record in designing, developing, and implementing scalable solutions. Proficient in Javascript, Python, and SQL, with strong experience in AWS and cloud technologies.",
     resumePath: "/resume.pdf",
 }
 
@@ -19,7 +19,7 @@ const Hero = () => {
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
           {/* text */}
           <div className="text-center xl:text-left order-2 xl:order-none">
-            <span className="text-xl text-gray-600 dark:text-gray-300">{data.title}</span>
+            <span className="text-l text-gray-600 dark:text-gray-300">{data.title}</span>
             <h1 className="h1 mb-6">
               Hello I'm <br/> <span>Nick Quinones</span>
             </h1>
